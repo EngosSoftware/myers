@@ -53,8 +53,16 @@ pub fn compare(a: &[String], b: &[String]) -> Option<Vec<Modification>> {
   let mut script: Vec<Option<Box<Edit>>> = vec![None; 2 * max_lines + 1];
   last_d[max_lines] = row;
   script[max_lines] = None;
-  let mut lower = if row == m { max_lines + 1 } else { max_lines - 1 };
-  let mut upper = if row == n { max_lines - 1 } else { max_lines + 1 };
+  let mut lower = if row == m {
+    max_lines.saturating_add(1)
+  } else {
+    max_lines.saturating_sub(1)
+  };
+  let mut upper = if row == n {
+    max_lines.saturating_sub(1)
+  } else {
+    max_lines.saturating_add(1)
+  };
   if lower > upper {
     // Compared files are identical, return an empty list of modifications.
     return Some(vec![]);
