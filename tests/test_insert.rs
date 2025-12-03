@@ -4,7 +4,7 @@ use myers::{Op, compare};
 fn single_insert_at_the_beginning() {
   let a: Vec<String> = ["b", "c", "d", "e"].map(String::from).to_vec();
   let b: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
-  let modifications = compare(&a, &b).unwrap();
+  let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Insert, modifications[0].op);
   assert_eq!(0, modifications[0].line1); // 0 means: before the 1st line in the old file
@@ -15,7 +15,7 @@ fn single_insert_at_the_beginning() {
 fn single_insert_in_the_middle() {
   let a: Vec<String> = ["a", "b", "d", "e"].map(String::from).to_vec();
   let b: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
-  let modifications = compare(&a, &b).unwrap();
+  let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Insert, modifications[0].op);
   assert_eq!(2, modifications[0].line1); // 2 means: after the 2nd line in the old file
@@ -26,7 +26,7 @@ fn single_insert_in_the_middle() {
 fn single_insert_at_the_end() {
   let a: Vec<String> = ["a", "b", "c", "d"].map(String::from).to_vec();
   let b: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
-  let modifications = compare(&a, &b).unwrap();
+  let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Insert, modifications[0].op);
   assert_eq!(4, modifications[0].line1); // 4 means: after the 4th line in the old file

@@ -4,7 +4,7 @@ use myers::{Op, compare};
 fn single_delete_at_the_beginning() {
   let a: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
   let b: Vec<String> = ["b", "c", "d", "e"].map(String::from).to_vec();
-  let modifications = compare(&a, &b).unwrap();
+  let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Delete, modifications[0].op);
   assert_eq!(1, modifications[0].line1); // 1 means: delete 1st line in the old file
@@ -15,7 +15,7 @@ fn single_delete_at_the_beginning() {
 fn single_delete_in_the_middle() {
   let a: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
   let b: Vec<String> = ["a", "b", "d", "e"].map(String::from).to_vec();
-  let modifications = compare(&a, &b).unwrap();
+  let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Delete, modifications[0].op);
   assert_eq!(3, modifications[0].line1); // 3 means: delete 3rd line in the old file
@@ -26,7 +26,7 @@ fn single_delete_in_the_middle() {
 fn single_delete_at_the_end() {
   let a: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
   let b: Vec<String> = ["a", "b", "c", "d"].map(String::from).to_vec();
-  let modifications = compare(&a, &b).unwrap();
+  let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Delete, modifications[0].op);
   assert_eq!(5, modifications[0].line1); // 5 means: delete 5th line in the old file

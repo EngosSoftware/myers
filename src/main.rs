@@ -19,9 +19,6 @@ fn print_report(file1: &[String], file2: &[String], modifications: &[Modificatio
 fn main() {
   let file1 = read_file("file1.txt");
   let file2 = read_file("file2.txt");
-  let Some(modifications) = compare(&file1, &file2) else {
-    println!("Something went wrong.");
-    return;
-  };
+  let modifications = compare(&file1, &file2);
   print_report(&file1, &file2, &modifications);
 }
