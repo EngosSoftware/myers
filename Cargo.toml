@@ -1,4 +1,17 @@
 [package]
 name = "myers"
-version = "0.1.0"
+version = "0.0.1"
+authors = ["Dariusz Depta <depta@engos.de>"]
+description = "A file comparison program"
+documentation = "https://docs.rs/myers"
+repository = "https://github.com/EngosSoftware/myers.git"
+keywords = ["file", "comparison", "program", "myers"]
+categories = ["command-line-utilities"]
+license = "MIT OR Apache-2.0"
 edition = "2024"
+exclude = [
+    "rustfmt.toml",
+    "Taskfile.yml",
+    ".github/",
+    ".gitignore"
+]

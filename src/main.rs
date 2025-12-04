@@ -1,5 +1,6 @@
 use myers::{Modification, compare};
 
+/// Reads the input file.
 fn read_file(file_name: &str) -> Vec<String> {
   let content = std::fs::read_to_string(file_name).expect("failed to read input file");
   let mut buffer = vec![];
@@ -9,6 +10,7 @@ fn read_file(file_name: &str) -> Vec<String> {
   buffer
 }
 
+/// Prints the edit script to standard output.
 fn print_report(file1: &[String], file2: &[String], modifications: &[Modification]) {
   let _ = file1;
   for modification in modifications {

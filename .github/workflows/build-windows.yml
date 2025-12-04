@@ -1,0 +1,16 @@
+name: Windows
+
+on:
+  push:
+    branches:
+      - main
+      - releases/**
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test
+      - run: cargo build --release
