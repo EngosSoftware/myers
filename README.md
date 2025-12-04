@@ -14,10 +14,10 @@
 [crates-badge]: https://img.shields.io/crates/v/myers.svg
 [crates-url]: https://crates.io/crates/myers
 [mit-badge]: https://img.shields.io/badge/License-MIT-blue.svg
-[mit-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE-MIT
+[mit-url]: https://opensource.org/licenses/MIT
 [mit-license-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE-MIT
 [apache-badge]: https://img.shields.io/badge/License-Apache%202.0-blue.svg
-[apache-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE
+[apache-url]: https://www.apache.org/licenses/LICENSE-2.0
 [apache-license-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE
 [apache-notice-url]: https://github.com/EngosSoftware/myers/blob/main/NOTICE
 [build-badge-linux]: https://github.com/EngosSoftware/myers/actions/workflows/build-linux.yml/badge.svg
