@@ -17,7 +17,7 @@
 [mit-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE-MIT
 [mit-license-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE-MIT
 [apache-badge]: https://img.shields.io/badge/License-Apache%202.0-blue.svg
-[apache-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE-APACHE
+[apache-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE
 [apache-license-url]: https://github.com/EngosSoftware/myers/blob/main/LICENSE
 [apache-notice-url]: https://github.com/EngosSoftware/myers/blob/main/NOTICE
 [build-badge-linux]: https://github.com/EngosSoftware/myers/actions/workflows/build-linux.yml/badge.svg
