@@ -83,7 +83,6 @@ pub fn compare(a: &[String], b: &[String]) -> Vec<Modification> {
         last_d[k] = row;
         if row == m && col == n {
           // Hit southeast corner - have the answer.
-
           let mut next = &script[k];
           while let Some(edit) = next {
             modifications.push(edit.modification.clone());
