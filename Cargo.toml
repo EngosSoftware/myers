@@ -1,6 +1,6 @@
 [package]
 name = "myers"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Dariusz Depta <depta@engos.de>"]
 description = "A file comparison program"
 documentation = "https://docs.rs/myers"
@@ -13,5 +13,7 @@ exclude = [
     "rustfmt.toml",
     "Taskfile.yml",
     ".github/",
-    ".gitignore"
+    ".gitignore",
+    "CODE_OF_CONDUCT.md",
+    "manual/"
 ]
