@@ -19,7 +19,7 @@ fn _0001() {
  5 5  e
 "#),
     report(&a, &b, &modifications)
-  )
+  );
 }
 
 #[test]
@@ -41,7 +41,7 @@ fn _0002() {
  5 5  e
 "#),
     report(&a, &b, &modifications)
-  )
+  );
 }
 
 #[ignore]

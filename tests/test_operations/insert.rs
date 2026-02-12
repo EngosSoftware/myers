@@ -13,7 +13,7 @@ fn _0001() {
  4 5  e
 "#),
     report(&a, &b, &compare(&a, &b))
-  )
+  );
 }
 
 #[test]
@@ -29,7 +29,7 @@ fn _0002() {
  4 5  e
 "#),
     report(&a, &b, &compare(&a, &b))
-  )
+  );
 }
 
 #[test]
@@ -45,5 +45,5 @@ fn _0003() {
    5 +e
 "#),
     report(&a, &b, &compare(&a, &b))
-  )
+  );
 }

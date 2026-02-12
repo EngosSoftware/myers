@@ -35,7 +35,18 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           last_index_2 += 1;
         }
       }
-      Op::Delete => {}
+      Op::Delete => {
+        if m.line_1 > m.line_2 {
+          while last_index_1 + 1 < m.line_1 {
+            _ = writeln!(&mut report, " {:>3$} {:>4$}  {}", last_index_1 + 1, last_index_2 + 1, file_1[last_index_1], col_1, col_2);
+            last_index_1 += 1;
+            last_index_2 += 1;
+          }
+          _ = writeln!(&mut report, " {:>3$} {:>4$} -{}", m.line_1, "", file_1[m.line_1 - 1], col_1, col_2);
+          last_index_1 += 1;
+        }
+        //
+      }
     }
     modification = modifications.next();
   }

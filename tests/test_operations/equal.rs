@@ -9,7 +9,7 @@ fn _0001() {
     n(r#"
 "#),
     report(&a, &b, &compare(&a, &b))
-  )
+  );
 }
 
 /// Compared files have a single line.
@@ -22,7 +22,7 @@ fn _0002() {
  1 1  a
 "#),
     report(&a, &b, &compare(&a, &b))
-  )
+  );
 }
 
 /// Compared files have multiple lines.
@@ -39,5 +39,5 @@ fn _0003() {
  5 5  e
 "#),
     report(&a, &b, &compare(&a, &b))
-  )
+  );
 }
