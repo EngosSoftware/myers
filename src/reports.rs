@@ -18,7 +18,6 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
   let mut modification = modifications.next();
   while modification.is_some() {
     let m = modification.unwrap();
-    println!("{:?}", m);
     match m.op {
       Op::Insert => {
         if m.line_1 == m.line_2 {
@@ -27,8 +26,13 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
             last_index_1 += 1;
             last_index_2 += 1;
           }
-          write(&mut report, DEL, m.line_1, 0, &file_1[m.line_1 - 1], col_1, col_2, cm);
-          write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);
+          if file_1[m.line_1 - 1] == file_2[m.line_2 - 1] {
+            write(&mut report, NOP, last_index_1 + 1, last_index_2 + 1, &file_1[m.line_1 - 1], col_1, col_2, cm);
+            write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);
+          } else {
+            write(&mut report, DEL, m.line_1, 0, &file_1[m.line_1 - 1], col_1, col_2, cm);
+            write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);
+          }
           last_index_1 += 1;
           last_index_2 += 1;
         } else if m.line_1 < m.line_2 {

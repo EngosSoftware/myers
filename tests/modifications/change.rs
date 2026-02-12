@@ -17,7 +17,6 @@ fn _0001a() {
 fn _0001() {
   let a = v(&["a", "b", "c", "d", "e"]);
   let b = v(&["x", "b", "c", "d", "e"]);
-  debug_modifications(&compare(&a, &b));
   assert_eq!(
     n(r#"
  1   - a
@@ -108,7 +107,7 @@ fn _0006() {
  1 1   a
  2   - b
  3 2   a
- 4   - b
+ 4 3   b
    4 + b
 "#),
     report(&a, &b, &compare(&a, &b), CM)
