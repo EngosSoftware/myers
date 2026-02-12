@@ -62,4 +62,3 @@ at your option.
 Any contributions to [myers][repository-url] are greatly appreciated.
 All contributions intentionally submitted for inclusion in the work by you,
 shall be dual licensed as above, without any additional terms or conditions.
-
