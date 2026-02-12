@@ -101,7 +101,6 @@ fn write(s: &mut String, ch: char, n1: usize, n2: usize, l: &str, c1: usize, c2:
   let n1 = if n1 > 0 { format!("{}", n1) } else { "".to_string() };
   let n2 = if n2 > 0 { format!("{}", n2) } else { "".to_string() };
   let text = format!(" {:>4$} {:>5$} {} {}", n1, n2, ch, l, c1, c2);
-  println!("{}", text);
   _ = writeln!(
     s,
     "{}",

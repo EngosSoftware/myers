@@ -1,0 +1,21 @@
+# Myers Diff Test Vectors
+# Format: A | B
+
+ |
+A |
+ | A
+A | A
+ABCDE | ABCDE
+ABC |
+ | ABC
+ABC | AXC
+AC | ABC
+ABC | AC
+XABC | ABC
+ABC | ABCD
+ABCABBA | CBABAC
+ABC | XYZ
+AAAA | AA
+A | B
+ABCDEF | ABCXYZ
+AXBYCZ | ABCZ
