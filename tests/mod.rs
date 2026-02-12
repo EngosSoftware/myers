@@ -1,4 +1,4 @@
-mod test_operations;
+mod modifications;
 
 use antex::ColorMode;
 use myers::{Op, compare, report};
