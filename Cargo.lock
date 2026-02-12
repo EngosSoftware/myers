@@ -3,6 +3,12 @@
 version = 4
 
 [[package]]
+name = "antex"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4e8e082972c0d4e7c60d10345c2180f4147629bea3344c39ecd79ae9dd6ab681"
+
+[[package]]
 name = "anyhow"
 version = "1.0.101"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -149,6 +155,7 @@ checksum = "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79"
 name = "myers"
 version = "0.1.0"
 dependencies = [
+ "antex",
  "cli-assert",
 ]
 

@@ -18,7 +18,7 @@ fn _0001() {
  4 4   d
  5 5   e
 "#),
-    report(&a, &b, &modifications)
+    report(&a, &b, &modifications, CM)
   );
 }
 
@@ -40,7 +40,7 @@ fn _0002() {
  4 4   d
  5 5   e
 "#),
-    report(&a, &b, &modifications)
+    report(&a, &b, &modifications, CM)
   );
 }
 
@@ -57,7 +57,7 @@ fn _0003() {
  5   - e
    5 + x
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -74,7 +74,7 @@ fn _0004() {
  5   - e
    4 + x
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -91,6 +91,6 @@ fn _0005() {
  5 3   e
    4 + x
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }

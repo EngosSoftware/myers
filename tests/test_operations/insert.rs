@@ -12,7 +12,7 @@ fn _0001() {
  3 4   d
  4 5   e
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -28,7 +28,7 @@ fn _0002() {
  3 4   d
  4 5   e
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -44,6 +44,6 @@ fn _0003() {
  4 4   d
    5 + e
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }

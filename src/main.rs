@@ -1,3 +1,4 @@
+use antex::ColorMode;
 use myers::{compare, report};
 
 /// Reads the input file.
@@ -19,7 +20,8 @@ fn main() {
     let file1 = read_file(&args[1]);
     let file2 = read_file(&args[2]);
     let modifications = compare(&file1, &file2);
-    print!("{}", report(&file1, &file2, &modifications));
+    let cm = ColorMode::default();
+    print!("{}", report(&file1, &file2, &modifications, cm));
   } else {
     eprintln!("WORK IN PROGRESS");
   }

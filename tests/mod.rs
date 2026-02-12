@@ -1,6 +1,9 @@
 mod test_operations;
 
+use antex::ColorMode;
 use myers::{Op, compare, report};
+
+const CM: ColorMode = ColorMode::Off;
 
 /// Converts a slice of strings to vector of strings.
 fn v(s: &[&str]) -> Vec<String> {

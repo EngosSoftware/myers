@@ -18,5 +18,8 @@ exclude = [
     "manual/"
 ]
 
+[dependencies]
+antex = "0.1.0"
+
 [dev-dependencies]
 cli-assert = "0.1.12"

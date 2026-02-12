@@ -8,7 +8,7 @@ fn _0001() {
   assert_eq!(
     n(r#"
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -21,7 +21,7 @@ fn _0002() {
     n(r#"
  1 1   a
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -38,6 +38,6 @@ fn _0003() {
  4 4   d
  5 5   e
 "#),
-    report(&a, &b, &compare(&a, &b))
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
