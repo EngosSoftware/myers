@@ -33,6 +33,15 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           }
           _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m.line_2, file_2[m.line_2 - 1], col_1, col_2);
           last_index_2 += 1;
+        } else if m.line_1 > m.line_2 {
+          while last_index_2 + 1 < m.line_2 {
+            _ = writeln!(&mut report, " {:>3$} {:>4$}  {}", last_index_1 + 1, last_index_2 + 1, file_1[last_index_1], col_1, col_2);
+            last_index_1 += 1;
+            last_index_2 += 1;
+          }
+          _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m.line_2, file_2[m.line_2 - 1], col_1, col_2);
+          last_index_1 += 1;
+          last_index_2 += 1;
         }
       }
       Op::Delete => {
@@ -44,8 +53,15 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           }
           _ = writeln!(&mut report, " {:>3$} {:>4$} -{}", m.line_1, "", file_1[m.line_1 - 1], col_1, col_2);
           last_index_1 += 1;
+          if let Some(m_after) = modifications.peek()
+            && m_after.op == Op::Insert
+            && m_after.line_1 == m.line_1
+          {
+            _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m_after.line_2, file_2[m_after.line_2 - 1], col_1, col_2);
+            last_index_2 += 1;
+            _ = modifications.next();
+          }
         }
-        //
       }
     }
     modification = modifications.next();
