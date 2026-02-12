@@ -38,7 +38,7 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           }
           write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);
           last_index_2 += 1;
-        } else if m.line_1 > m.line_2 {
+        } else {
           while last_index_2 + 1 < m.line_2 {
             write(&mut report, NOP, last_index_1 + 1, last_index_2 + 1, &file_1[last_index_1], col_1, col_2, cm);
             last_index_1 += 1;
