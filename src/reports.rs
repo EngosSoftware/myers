@@ -50,22 +50,20 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
         }
       }
       Op::Delete => {
-        if m.line_1 > m.line_2 {
-          while last_index_1 + 1 < m.line_1 {
-            write(&mut report, NOP, last_index_1 + 1, last_index_2 + 1, &file_1[last_index_1], col_1, col_2, cm);
-            last_index_1 += 1;
-            last_index_2 += 1;
-          }
-          write(&mut report, DEL, m.line_1, 0, &file_1[m.line_1 - 1], col_1, col_2, cm);
+        while last_index_1 + 1 < m.line_1 {
+          write(&mut report, NOP, last_index_1 + 1, last_index_2 + 1, &file_1[last_index_1], col_1, col_2, cm);
           last_index_1 += 1;
-          if let Some(m_after) = modifications.peek()
-            && m_after.op == Op::Insert
-            && m_after.line_1 == m.line_1
-          {
-            write(&mut report, INS, 0, m_after.line_2, &file_2[m_after.line_2 - 1], col_1, col_2, cm);
-            last_index_2 += 1;
-            _ = modifications.next();
-          }
+          last_index_2 += 1;
+        }
+        write(&mut report, DEL, m.line_1, 0, &file_1[m.line_1 - 1], col_1, col_2, cm);
+        last_index_1 += 1;
+        if let Some(m_after) = modifications.peek()
+          && m_after.op == Op::Insert
+          && m_after.line_1 == m.line_1
+        {
+          write(&mut report, INS, 0, m_after.line_2, &file_2[m_after.line_2 - 1], col_1, col_2, cm);
+          last_index_2 += 1;
+          _ = modifications.next();
         }
       }
     }
