@@ -13,15 +13,15 @@ pub struct Modification {
   /// Operation to be performed on the old file.
   pub op: Op,
   /// Line number in the old file.
-  pub line1: usize,
+  pub line_1: usize,
   /// Line number in the new file.
-  pub line2: usize,
+  pub line_2: usize,
 }
 
 impl Modification {
   /// Creates a new modification details.
-  pub fn new(op: Op, line1: usize, line2: usize) -> Self {
-    Self { op, line1, line2 }
+  pub fn new(op: Op, line_1: usize, line_2: usize) -> Self {
+    Self { op, line_1, line_2 }
   }
 }
 

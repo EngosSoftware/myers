@@ -7,8 +7,8 @@ fn single_insert_at_the_beginning() {
   let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Insert, modifications[0].op);
-  assert_eq!(0, modifications[0].line1);
-  assert_eq!(1, modifications[0].line2);
+  assert_eq!(0, modifications[0].line_1);
+  assert_eq!(1, modifications[0].line_2);
 }
 
 #[test]
@@ -18,8 +18,8 @@ fn single_insert_in_the_middle() {
   let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Insert, modifications[0].op);
-  assert_eq!(2, modifications[0].line1);
-  assert_eq!(3, modifications[0].line2);
+  assert_eq!(2, modifications[0].line_1);
+  assert_eq!(3, modifications[0].line_2);
 }
 
 #[test]
@@ -29,6 +29,6 @@ fn single_insert_at_the_end() {
   let modifications = compare(&a, &b);
   assert_eq!(1, modifications.len());
   assert_eq!(Op::Insert, modifications[0].op);
-  assert_eq!(4, modifications[0].line1);
-  assert_eq!(5, modifications[0].line2);
+  assert_eq!(4, modifications[0].line_1);
+  assert_eq!(5, modifications[0].line_2);
 }
