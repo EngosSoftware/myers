@@ -26,6 +26,9 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m.line_2, file_2[m.line_2 - 1], col_1, col_2);
           last_index_1 += 1;
           last_index_2 += 1;
+        } else if m.line_1 < m.line_2 {
+          _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m.line_2, file_2[m.line_2 - 1], col_1, col_2);
+          last_index_2 += 1;
         }
       }
       Op::Delete => {}
