@@ -3,24 +3,39 @@ use std::fmt::Write;
 
 pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modification]) -> String {
   let mut report = String::new();
-  let width_1 = digits(file_1.len());
-  let width_2 = digits(file_2.len());
-  let mut last_line = 1;
-  for m in modifications {
+  let len_1 = file_1.len();
+  let len_2 = file_2.len();
+  let col_1 = digits(len_1);
+  let col_2 = digits(len_2);
+  let mut last_index_1 = 0;
+  let mut last_index_2 = 0;
+  let mut modifications = modifications.iter().peekable();
+  let mut modification = modifications.next();
+  while modification.is_some() {
+    let m = modification.unwrap();
     let line = m.line1;
-    while last_line < line {
-      _ = writeln!(&mut report, " {0:>2$} {0:>3$}  {1:}", last_line, file_1[last_line - 1], width_1, width_2);
-      last_line += 1;
+    while last_index_1 + 1 < line {
+      _ = writeln!(&mut report, " {:>3$} {:>4$}  {}", last_index_1 + 1, last_index_2 + 1, file_1[last_index_1], col_1, col_2);
+      last_index_1 += 1;
+      last_index_2 += 1;
     }
     match m.op {
       Op::Insert => {
         if m.line1 == m.line2 {
-          _ = writeln!(&mut report, " {:>3$} {:>4$} -{}", m.line1, "", file_1[m.line1 - 1], width_1, width_2);
-          _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m.line2, file_2[m.line2 - 1], width_1, width_2);
+          _ = writeln!(&mut report, " {:>3$} {:>4$} -{}", m.line1, "", file_1[m.line1 - 1], col_1, col_2);
+          _ = writeln!(&mut report, " {:>3$} {:>4$} +{}", "", m.line2, file_2[m.line2 - 1], col_1, col_2);
+          last_index_1 += 1;
+          last_index_2 += 1;
         }
       }
       Op::Delete => {}
     }
+    modification = modifications.next();
+  }
+  while last_index_1 < len_1 && last_index_2 < len_2 {
+    _ = writeln!(&mut report, " {:>3$} {:>4$}  {}", last_index_1 + 1, last_index_2 + 1, file_1[last_index_1], col_1, col_2);
+    last_index_1 += 1;
+    last_index_2 += 1;
   }
   report
 }

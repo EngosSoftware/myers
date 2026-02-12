@@ -13,6 +13,10 @@ fn _0001() {
     n(r#"
  1   -a
    1 +x
+ 2 2  b
+ 3 3  c
+ 4 4  d
+ 5 5  e
 "#),
     report(&a, &b, &modifications)
   )
@@ -33,6 +37,8 @@ fn _0002() {
  2 2  b
  3   -c
    3 +x
+ 4 4  d
+ 5 5  e
 "#),
     report(&a, &b, &modifications)
   )
