@@ -95,5 +95,5 @@ pub fn digits(mut n: usize) -> usize {
 fn write(s: &mut String, ch: char, n1: usize, n2: usize, l: &str, c1: usize, c2: usize) {
   let n1 = if n1 > 0 { format!("{}", n1) } else { "".to_string() };
   let n2 = if n2 > 0 { format!("{}", n2) } else { "".to_string() };
-  _ = writeln!(s, " {:>4$} {:>5$} {}{}", n1, n2, ch, l, c1, c2);
+  _ = writeln!(s, " {:>4$} {:>5$} {} {}", n1, n2, ch, l, c1, c2);
 }

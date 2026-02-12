@@ -6,11 +6,11 @@ fn _0001() {
   let b = v(&["b", "c", "d", "e"]);
   assert_eq!(
     n(r#"
- 1   -a
- 2 1  b
- 3 2  c
- 4 3  d
- 5 4  e
+ 1   - a
+ 2 1   b
+ 3 2   c
+ 4 3   d
+ 5 4   e
 "#),
     report(&a, &b, &compare(&a, &b))
   );
@@ -22,11 +22,11 @@ fn _0002() {
   let b = v(&["a", "b", "d", "e"]);
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3   -c
- 4 3  d
- 5 4  e
+ 1 1   a
+ 2 2   b
+ 3   - c
+ 4 3   d
+ 5 4   e
 "#),
     report(&a, &b, &compare(&a, &b))
   );
@@ -43,11 +43,11 @@ fn _0003() {
   assert_eq!(4, modifications[0].line_2);
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3 3  c
- 4 4  d
- 5   -e
+ 1 1   a
+ 2 2   b
+ 3 3   c
+ 4 4   d
+ 5   - e
 "#),
     report(&a, &b, &compare(&a, &b))
   );

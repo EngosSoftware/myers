@@ -11,12 +11,12 @@ fn _0001() {
   assert_eq!(1, modifications[0].line_2);
   assert_eq!(
     n(r#"
- 1   -a
-   1 +x
- 2 2  b
- 3 3  c
- 4 4  d
- 5 5  e
+ 1   - a
+   1 + x
+ 2 2   b
+ 3 3   c
+ 4 4   d
+ 5 5   e
 "#),
     report(&a, &b, &modifications)
   );
@@ -33,12 +33,12 @@ fn _0002() {
   assert_eq!(3, modifications[0].line_2); // 3 means: 3rd line of the new file
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3   -c
-   3 +x
- 4 4  d
- 5 5  e
+ 1 1   a
+ 2 2   b
+ 3   - c
+   3 + x
+ 4 4   d
+ 5 5   e
 "#),
     report(&a, &b, &modifications)
   );
@@ -50,12 +50,12 @@ fn _0003() {
   let b = v(&["a", "b", "c", "d", "x"]);
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3 3  c
- 4 4  d
- 5   -e
-   5 +x
+ 1 1   a
+ 2 2   b
+ 3 3   c
+ 4 4   d
+ 5   - e
+   5 + x
 "#),
     report(&a, &b, &compare(&a, &b))
   );
@@ -67,12 +67,12 @@ fn _0004() {
   let b: Vec<String> = ["a", "b", "c", "x"].map(String::from).to_vec();
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3 3  c
- 4   -d
- 5   -e
-   4 +x
+ 1 1   a
+ 2 2   b
+ 3 3   c
+ 4   - d
+ 5   - e
+   4 + x
 "#),
     report(&a, &b, &compare(&a, &b))
   );
@@ -84,12 +84,12 @@ fn _0005() {
   let b = v(&["a", "b", "e", "x"]);
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3   -c
- 4   -d
- 5 3  e
-   4 +x
+ 1 1   a
+ 2 2   b
+ 3   - c
+ 4   - d
+ 5 3   e
+   4 + x
 "#),
     report(&a, &b, &compare(&a, &b))
   );

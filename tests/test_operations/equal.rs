@@ -19,7 +19,7 @@ fn _0002() {
   let b = v(&["a"]);
   assert_eq!(
     n(r#"
- 1 1  a
+ 1 1   a
 "#),
     report(&a, &b, &compare(&a, &b))
   );
@@ -32,11 +32,11 @@ fn _0003() {
   let b = v(&["a", "b", "c", "d", "e"]);
   assert_eq!(
     n(r#"
- 1 1  a
- 2 2  b
- 3 3  c
- 4 4  d
- 5 5  e
+ 1 1   a
+ 2 2   b
+ 3 3   c
+ 4 4   d
+ 5 5   e
 "#),
     report(&a, &b, &compare(&a, &b))
   );
