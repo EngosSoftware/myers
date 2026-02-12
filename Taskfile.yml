@@ -29,13 +29,13 @@ tasks:
     desc: Generates the code coverage report in HTML format
     cmds:
       - cmd: cargo +stable llvm-cov clean
-      - cmd: cargo +stable llvm-cov --no-cfg-coverage --html --open
+      - cmd: cargo +stable llvm-cov --no-cfg-coverage --html
 
   cov-html-open:
     desc: Generates the code coverage report in HTML format and opens it in a browser
     cmds:
       - cmd: cargo +stable llvm-cov clean
-      - cmd: cargo +stable llvm-cov --no-cfg-coverage --html
+      - cmd: cargo +stable llvm-cov --no-cfg-coverage --html --open
 
   cov-badge:
     desc: Generates the detailed code coverage badge

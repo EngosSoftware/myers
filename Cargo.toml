@@ -17,3 +17,6 @@ exclude = [
     "CODE_OF_CONDUCT.md",
     "manual/"
 ]
+
+[dev-dependencies]
+cli-assert = "0.1.12"
