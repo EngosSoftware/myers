@@ -31,6 +31,21 @@ fn _0001() {
 }
 
 #[test]
+fn _0002a() {
+  let a = v(&["a", "b", "c"]);
+  let b = v(&["a", "x", "c"]);
+  assert_eq!(
+    n(r#"
+ 1 1   a
+ 2   - b
+   2 + x
+ 3 3   c
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
+
+#[test]
 fn _0002() {
   let a = v(&["a", "b", "c", "d", "e"]);
   let b = v(&["a", "b", "x", "d", "e"]);
@@ -109,6 +124,39 @@ fn _0006() {
  3 2   a
  4 3   b
    4 + b
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
+
+#[test]
+fn _0007() {
+  df(
+    "abcabba",
+    "cbabac",
+    r#"
+ 1 1   a
+   2 + b
+ 3 3   c
+ 4 4   a
+ 5 5   b
+ 6   - b
+   6 + c
+"#,
+  );
+
+  let a = v(&["a", "b", "c", "a", "b", "b", "a"]);
+  let b = v(&["c", "b", "a", "b", "a", "c"]);
+  debug_modifications(&compare(&a, &b));
+  assert_eq!(
+    n(r#"
+ 1 1   a
+   2 + b
+ 3 3   c
+ 4 4   a
+ 5 5   b
+ 6   - b
+   6 + c
 "#),
     report(&a, &b, &compare(&a, &b), CM)
   );

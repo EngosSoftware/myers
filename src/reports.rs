@@ -36,8 +36,8 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           last_1 += 1;
           last_2 += 1;
         } else if m.line_1 < m.line_2 {
-          while last_1 + 1 < m.line_2 {
-            write(&mut report, NOP, last_1 + 1, last_2 + 1, &file_1[last_1], col_1, col_2, cm);
+          while last_2 + 1 < m.line_2 {
+            write(&mut report, NOP, last_1 + 1, last_2 + 1, &file_2[last_1], col_1, col_2, cm);
             last_1 += 1;
             last_2 += 1;
           }

@@ -1,7 +1,7 @@
 mod modifications;
 
 use antex::ColorMode;
-use myers::{Modification, Op, compare, report};
+use myers::{Modification, compare, report};
 
 const CM: ColorMode = ColorMode::Off;
 
@@ -20,4 +20,10 @@ fn debug_modifications(modifications: &[Modification]) {
   for modification in modifications {
     println!("{:?}", modification);
   }
+}
+
+fn df(a: &str, b: &str, expected: &str) {
+  let a = a.chars().map(|c| c.to_string()).collect::<Vec<String>>();
+  let b = b.chars().map(|c| c.to_string()).collect::<Vec<String>>();
+  assert_eq!(n(expected), report(&a, &b, &compare(&a, &b), CM));
 }

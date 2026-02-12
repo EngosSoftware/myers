@@ -59,3 +59,31 @@ fn _0003() {
     report(&a, &b, &compare(&a, &b), CM)
   );
 }
+
+#[test]
+fn _0004() {
+  let a = v(&[]);
+  let b = v(&["a", "b", "c"]);
+  assert_eq!(
+    n(r#"
+   1 + a
+   2 + b
+   3 + c
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
+
+#[test]
+fn _0005() {
+  let a = v(&["a", "c"]);
+  let b = v(&["a", "b", "c"]);
+  assert_eq!(
+    n(r#"
+ 1 1   a
+   2 + b
+ 2 3   c
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
