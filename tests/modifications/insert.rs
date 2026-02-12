@@ -1,6 +1,18 @@
 use super::*;
 
 #[test]
+fn _0001a() {
+  let a = v(&[]);
+  let b = v(&["a"]);
+  assert_eq!(
+    n(r#"
+   1 + a
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
+
+#[test]
 fn _0001() {
   let a = v(&["b", "c", "d", "e"]);
   let b = v(&["a", "b", "c", "d", "e"]);

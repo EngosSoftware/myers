@@ -1,3 +1,5 @@
+use std::fmt::Debug;
+
 /// Operation on the old file.
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Op {

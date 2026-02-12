@@ -1,14 +1,23 @@
 use super::*;
 
 #[test]
+fn _0001a() {
+  let a = v(&["a"]);
+  let b = v(&["b"]);
+  assert_eq!(
+    n(r#"
+ 1   - a
+   1 + b
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
+
+#[test]
 fn _0001() {
   let a = v(&["a", "b", "c", "d", "e"]);
   let b = v(&["x", "b", "c", "d", "e"]);
-  let modifications = compare(&a, &b);
-  assert_eq!(1, modifications.len());
-  assert_eq!(Op::Insert, modifications[0].op);
-  assert_eq!(1, modifications[0].line_1);
-  assert_eq!(1, modifications[0].line_2);
+  debug_modifications(&compare(&a, &b));
   assert_eq!(
     n(r#"
  1   - a
@@ -18,7 +27,7 @@ fn _0001() {
  4 4   d
  5 5   e
 "#),
-    report(&a, &b, &modifications, CM)
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -26,11 +35,6 @@ fn _0001() {
 fn _0002() {
   let a = v(&["a", "b", "c", "d", "e"]);
   let b = v(&["a", "b", "x", "d", "e"]);
-  let modifications = compare(&a, &b);
-  assert_eq!(1, modifications.len());
-  assert_eq!(Op::Insert, modifications[0].op);
-  assert_eq!(3, modifications[0].line_1); // 3 means: 3rd line in the old file
-  assert_eq!(3, modifications[0].line_2); // 3 means: 3rd line of the new file
   assert_eq!(
     n(r#"
  1 1   a
@@ -40,7 +44,7 @@ fn _0002() {
  4 4   d
  5 5   e
 "#),
-    report(&a, &b, &modifications, CM)
+    report(&a, &b, &compare(&a, &b), CM)
   );
 }
 
@@ -63,8 +67,8 @@ fn _0003() {
 
 #[test]
 fn _0004() {
-  let a: Vec<String> = ["a", "b", "c", "d", "e"].map(String::from).to_vec();
-  let b: Vec<String> = ["a", "b", "c", "x"].map(String::from).to_vec();
+  let a = v(&["a", "b", "c", "d", "e"]);
+  let b = v(&["a", "b", "c", "x"]);
   assert_eq!(
     n(r#"
  1 1   a
@@ -90,6 +94,22 @@ fn _0005() {
  4   - d
  5 3   e
    4 + x
+"#),
+    report(&a, &b, &compare(&a, &b), CM)
+  );
+}
+
+#[test]
+fn _0006() {
+  let a = v(&["a", "b", "a", "b"]);
+  let b = v(&["a", "a", "b", "b"]);
+  assert_eq!(
+    n(r#"
+ 1 1   a
+ 2   - b
+ 3 2   a
+ 4   - b
+   4 + b
 "#),
     report(&a, &b, &compare(&a, &b), CM)
   );

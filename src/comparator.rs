@@ -18,7 +18,7 @@ pub fn compare(a: &[String], b: &[String]) -> Vec<Modification> {
   if lower <= upper {
     for d in 1..=(2 * max_lines) {
       for k in (lower..=upper).step_by(2) {
-        let (op, link) = if k == max_lines - d || k != max_lines + d && last_d[k + 1] >= last_d[k - 1] {
+        let (op, link) = if k + d == max_lines || k != max_lines + d && last_d[k + 1] >= last_d[k - 1] {
           row = last_d[k + 1] + 1;
           (Op::Delete, script[k + 1].take())
         } else {
