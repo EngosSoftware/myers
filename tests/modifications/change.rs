@@ -131,33 +131,101 @@ fn _0006() {
 
 #[test]
 fn _0007() {
-  df(
-    "abcabba",
-    "cbabac",
+  diff(
+    false,
+    "a,b,c,a,b,b,a",
+    "c,b,a,b,a,c",
     r#"
- 1 1   a
+ 1   - a
+ 2   - b
+ 3 1   c
    2 + b
- 3 3   c
- 4 4   a
- 5 5   b
+ 4 3   a
+ 5 4   b
  6   - b
+ 7 5   a
    6 + c
 "#,
+    r#"
+Delete 1 0
+Delete 2 0
+Insert 3 2
+Delete 6 4
+Insert 7 6
+"#,
   );
+}
 
-  let a = v(&["a", "b", "c", "a", "b", "b", "a"]);
-  let b = v(&["c", "b", "a", "b", "a", "c"]);
-  debug_modifications(&compare(&a, &b));
-  assert_eq!(
-    n(r#"
+#[test]
+fn _0008() {
+  diff(
+    false,
+    "a,b,c",
+    "x,y,z",
+    r#"
+ 1   - a
+ 2   - b
+ 3   - c
+   1 + x
+   2 + y
+   3 + z
+"#,
+    r#"
+Delete 1 0
+Delete 2 0
+Delete 3 0
+Insert 3 1
+Insert 3 2
+Insert 3 3
+"#,
+  );
+}
+
+#[test]
+fn _0009() {
+  diff(
+    false,
+    "a,b,c,d,e,f",
+    "a,b,c,x,y,z",
+    r#"
  1 1   a
-   2 + b
+ 2 2   b
  3 3   c
- 4 4   a
- 5 5   b
- 6   - b
-   6 + c
-"#),
-    report(&a, &b, &compare(&a, &b), CM)
+ 4   - d
+ 5   - e
+ 6   - f
+   4 + x
+   5 + y
+   6 + z
+"#,
+    r#"
+Delete 4 3
+Delete 5 3
+Delete 6 3
+Insert 6 4
+Insert 6 5
+Insert 6 6
+"#,
+  );
+}
+
+#[test]
+fn _0010() {
+  diff(
+    false,
+    "a,x,b,y,c,z",
+    "a,b,c,z",
+    r#"
+ 1 1   a
+ 2   - x
+ 3 2   b
+ 4   - y
+ 5 3   c
+ 6 4   z
+"#,
+    r#"
+Delete 2 1
+Delete 4 2
+"#,
   );
 }

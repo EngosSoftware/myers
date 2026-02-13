@@ -30,7 +30,7 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
             write(&mut report, NOP, last_1 + 1, last_2 + 1, &file_1[m.line_1 - 1], col_1, col_2, cm);
             write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);
           } else {
-            write(&mut report, DEL, m.line_1, 0, &file_1[m.line_1 - 1], col_1, col_2, cm);
+            //write(&mut report, DEL, m.line_1, 0, &file_1[m.line_1 - 1], col_1, col_2, cm);
             write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);
           }
           last_1 += 1;
@@ -45,8 +45,7 @@ pub fn report(file_1: &[String], file_2: &[String], modifications: &[Modificatio
           last_2 += 1;
         } else {
           while last_2 + 1 < m.line_2 {
-            write(&mut report, NOP, last_1 + 1, last_2 + 1, &file_1[last_1], col_1, col_2, cm);
-            last_1 += 1;
+            write(&mut report, NOP, last_1 + 1, last_2 + 1, &file_2[last_2], col_1, col_2, cm);
             last_2 += 1;
           }
           write(&mut report, INS, 0, m.line_2, &file_2[m.line_2 - 1], col_1, col_2, cm);

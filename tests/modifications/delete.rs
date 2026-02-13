@@ -87,3 +87,22 @@ fn _0005() {
     report(&a, &b, &compare(&a, &b), CM)
   );
 }
+
+#[test]
+fn _0006() {
+  diff(
+    false,
+    "a,a,a,a",
+    "a,a",
+    r#"
+ 1 1   a
+ 2 2   a
+ 3   - a
+ 4   - a
+"#,
+    r#"
+Delete 3 2
+Delete 4 2
+"#,
+  );
+}

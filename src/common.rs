@@ -1,4 +1,5 @@
 use std::fmt::Debug;
+use std::rc::Rc;
 
 /// Operation on the old file.
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
@@ -33,12 +34,12 @@ pub struct Edit {
   /// Modification details.
   pub modification: Modification,
   /// Link to the previous operation.
-  pub link: Option<Box<Edit>>,
+  pub link: Option<Rc<Edit>>,
 }
 
 impl Edit {
   /// Creates a new edit details.
-  pub fn new(modification: Modification, link: Option<Box<Edit>>) -> Self {
+  pub fn new(modification: Modification, link: Option<Rc<Edit>>) -> Self {
     Self { modification, link }
   }
 }

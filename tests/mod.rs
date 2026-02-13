@@ -2,6 +2,7 @@ mod modifications;
 
 use antex::ColorMode;
 use myers::{Modification, compare, report};
+use std::fmt::Write;
 
 const CM: ColorMode = ColorMode::Off;
 
@@ -22,8 +23,20 @@ fn debug_modifications(modifications: &[Modification]) {
   }
 }
 
-fn df(a: &str, b: &str, expected: &str) {
-  let a = a.chars().map(|c| c.to_string()).collect::<Vec<String>>();
-  let b = b.chars().map(|c| c.to_string()).collect::<Vec<String>>();
-  assert_eq!(n(expected), report(&a, &b, &compare(&a, &b), CM));
+fn diff(trace: bool, a: &str, b: &str, expected_output: &str, expected_edits: &str) {
+  let a = a.split(',').map(|s| s.to_string()).collect::<Vec<String>>();
+  let b = b.split(',').map(|s| s.to_string()).collect::<Vec<String>>();
+  let modifications = compare(&a, &b);
+  if trace {
+    for modification in &modifications {
+      println!("{:?} {} {}", modification.op, modification.line_1, modification.line_2);
+    }
+  }
+  let mut actual_edits = String::new();
+  for modification in &modifications {
+    _ = writeln!(&mut actual_edits, "{:?} {} {}", modification.op, modification.line_1, modification.line_2);
+  }
+  assert!(!expected_output.is_empty(), "expected output may not be empty");
+  assert_eq!(expected_output[1..], report(&a, &b, &modifications, CM));
+  assert_eq!(expected_edits.trim(), actual_edits.trim());
 }
