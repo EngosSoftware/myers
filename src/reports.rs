@@ -104,9 +104,9 @@ fn write(s: &mut String, ch: char, n1: usize, n2: usize, l: &str, c1: usize, c2:
     s,
     "{}",
     match ch {
-      INS => Text::new(cm).green().s(text),
-      DEL => Text::new(cm).red().s(text),
-      _ => Text::new(cm).s(text),
+      INS => Text::new(cm).green().s(text).normal(),
+      DEL => Text::new(cm).red().s(text).normal(),
+      _ => Text::new(cm).normal().s(text),
     }
   );
 }
