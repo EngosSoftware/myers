@@ -1,3 +1,4 @@
+mod cli;
 mod modifications;
 
 use antex::ColorMode;

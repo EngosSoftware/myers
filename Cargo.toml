@@ -19,7 +19,7 @@ exclude = [
 ]
 
 [dependencies]
-antex = "0.1.0"
+antex = "0.2.1"
 
 [dev-dependencies]
 cli-assert = "0.1.12"
